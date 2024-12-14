@@ -1,7 +1,6 @@
 import 'package:atw_signin_task/constants.dart';
 import 'package:atw_signin_task/features/auth/presentation/view/widgets/custom_button.dart';
 import 'package:atw_signin_task/features/auth/presentation/view/widgets/custom_text_form_field.dart';
-import 'package:atw_signin_task/features/auth/presentation/view/widgets/dont_have_account_widget.dart';
 import 'package:atw_signin_task/features/auth/presentation/view/widgets/password_field.dart';
 import 'package:atw_signin_task/features/auth/presentation/view_model/signup_cubit/signup_cubit.dart';
 import 'package:flutter/material.dart';
@@ -34,12 +33,12 @@ class _SignupBodyState extends State<SignupBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  "Let's Sign you in.",
+                  "Let's Sign you Up.",
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
                 ),
-                const Text("Welcome back.", style: TextStyle(fontSize: 25)),
-                const Text("You've been missed!",
-                    style: TextStyle(fontSize: 25)),
+                // const Text("Welcome back.", style: TextStyle(fontSize: 25)),
+                // const Text("You're welcome!",
+                //     style: TextStyle(fontSize: 25)),
                 const SizedBox(
                   height: 40,
                 ),
@@ -47,14 +46,17 @@ class _SignupBodyState extends State<SignupBody> {
                   onSaved: (value) {
                     name = value!;
                   },
-                  hintText: 'Your name',
+                  hintText: 'name',
                   textInputType: TextInputType.name,
+                ),
+                const SizedBox(
+                  height: 30,
                 ),
                 CustomTextFormField(
                   onSaved: (value) {
                     email = value!;
                   },
-                  hintText: 'Your email',
+                  hintText: 'email',
                   textInputType: TextInputType.emailAddress,
                 ),
                 const SizedBox(
@@ -76,18 +78,17 @@ class _SignupBodyState extends State<SignupBody> {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
-                      context.read<SignupCubit>().createUserWithEmailAndPassword(email, password, name);
+                      context
+                          .read<SignupCubit>()
+                          .createUserWithEmailAndPassword(
+                              email, password, name);
                     } else {
                       autovalidateMode = AutovalidateMode.always;
                       setState(() {});
                     }
                   },
-                  text: 'Sign in',
+                  text: 'Sign up',
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const DontHaveAnAccountWidget(),
               ],
             ),
             const Spacer(

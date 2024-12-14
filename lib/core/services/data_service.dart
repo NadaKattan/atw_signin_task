@@ -8,6 +8,4 @@ abstract class DatabaseService {
     required String docuementId,
   });
 
-
-  Future<bool> checkIfDataExists({required String path, required String docuementId});
 }

@@ -1,6 +1,5 @@
 import 'package:atw_signin_task/core/errors/failures.dart';
-import 'package:atw_signin_task/features/auth/data/user_model.dart';
-
+import 'package:atw_signin_task/features/auth/data/models/user_model.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class AuthRepo {
@@ -11,5 +10,5 @@ abstract class AuthRepo {
       String email, String password);
   Future addUserData({required UserEntity user});
   Future<UserEntity> getUserData({required String uid});
-  // Future saveUserData({required UserEntity user});
+  Future saveUserData({required UserEntity user});
 }

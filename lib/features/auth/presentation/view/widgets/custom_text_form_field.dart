@@ -18,15 +18,20 @@ class CustomTextFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        suffixIcon == null
+        suffixIcon != null
             ? const Text(
-                "Email",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-              )
-            : const Text(
                 "Password",
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-              ),
+              )
+            : hintText == 'name'
+                ? const Text(
+                    "Name",
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                  )
+                : const Text(
+                    "Email",
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                  ),
         TextFormField(
           obscureText: obscureText,
           onSaved: onSaved,

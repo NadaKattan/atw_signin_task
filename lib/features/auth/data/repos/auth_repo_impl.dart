@@ -7,8 +7,8 @@ import 'package:atw_signin_task/core/services/data_service.dart';
 import 'package:atw_signin_task/core/services/firebase_auth_service.dart';
 import 'package:atw_signin_task/core/services/shared_preferences_singleton.dart';
 import 'package:atw_signin_task/core/utils/backend_endpoint.dart';
-import 'package:atw_signin_task/features/auth/data/auth_repo.dart';
-import 'package:atw_signin_task/features/auth/data/user_model.dart';
+import 'package:atw_signin_task/features/auth/data/repos/auth_repo.dart';
+import 'package:atw_signin_task/features/auth/data/models/user_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -42,7 +42,7 @@ class AuthRepoImpl extends AuthRepo {
       );
       return left(
         ServerFailure(
-          'حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
+          'Something went wrong! Please, try again',
         ),
       );
     }
@@ -72,7 +72,7 @@ class AuthRepoImpl extends AuthRepo {
       );
       return left(
         ServerFailure(
-          'حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
+          'Something went wrong! Please, try again',
         ),
       );
     }
@@ -94,9 +94,9 @@ class AuthRepoImpl extends AuthRepo {
     return UserModel.fromJson(userData);
   }
 
-  // @override
-  // Future saveUserData({required UserEntity user}) async {
-  //   var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
-  //   await Prefs.setString(kUserData, jsonData);
-  // }
+  @override
+  Future saveUserData({required UserEntity user}) async {
+    var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+    await Prefs.setString(kUserData, jsonData);
+  }
 }

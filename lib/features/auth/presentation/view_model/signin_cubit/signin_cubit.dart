@@ -1,10 +1,7 @@
-import 'package:atw_signin_task/features/auth/data/auth_repo.dart';
-import 'package:atw_signin_task/features/auth/data/user_model.dart';
+import 'package:atw_signin_task/features/auth/data/repos/auth_repo.dart';
+import 'package:atw_signin_task/features/auth/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-// import 'package:meta/meta.dart';
-
 
 part 'signin_state.dart';
 

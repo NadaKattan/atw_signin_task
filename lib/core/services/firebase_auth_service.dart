@@ -1,6 +1,4 @@
 import 'dart:developer';
-// import 'dart:math' as math;
-// import 'package:crypto/crypto.dart';
 import 'package:atw_signin_task/core/errors/exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -21,21 +19,21 @@ class FirebaseAuthService {
     } on FirebaseAuthException catch (e) {
       log("Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()} and code is ${e.code}");
       if (e.code == 'weak-password') {
-        throw CustomException(message: 'الرقم السري ضعيف جداً.');
+        throw CustomException(message: 'The password is too weak.');
       } else if (e.code == 'email-already-in-use') {
         throw CustomException(
-            message: 'لقد قمت بالتسجيل مسبقاً. الرجاء تسجيل الدخول.');
+            message: 'You have already registered. Please log in.');
       } else if (e.code == 'network-request-failed') {
-        throw CustomException(message: 'تاكد من اتصالك بالانترنت.');
+        throw CustomException(message: 'Make sure you are connected to the internet.');
       } else {
         throw CustomException(
-            message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.');
+            message: 'Something went wrong! Please try again.');
       }
     } catch (e) {
       log("Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}");
 
       throw CustomException(
-          message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.');
+          message: 'Something went wrong! Please try again');
     }
   }
 
@@ -47,47 +45,20 @@ class FirebaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log("Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()} and code is ${e.code}");
-      if (e.code == 'user-not-found') {
+      if (e.code == 'user-not-found'||e.code == 'wrong-password'||e.code == 'invalid-credential') {
         throw CustomException(
-            message: 'الرقم السري او البريد الالكتروني غير صحيح.');
-      } else if (e.code == 'wrong-password') {
-        throw CustomException(
-            message: 'الرقم السري او البريد الالكتروني غير صحيح.');
-      } else if (e.code == 'invalid-credential') {
-        throw CustomException(
-            message: 'الرقم السري او البريد الالكتروني غير صحيح.');
+            message: 'The password or email is incorrect.');
       } else if (e.code == 'network-request-failed') {
-        throw CustomException(message: 'تاكد من اتصالك بالانترنت.');
+        throw CustomException(message: 'Make sure you are connected to the internet.');
       } else {
         throw CustomException(
-            message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.');
+            message: 'Something went wrong! Please try again');
       }
     } catch (e) {
       log("Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()}");
 
       throw CustomException(
-          message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.');
+          message: 'Something went wrong! Please try again');
     }
-  }
-
-  /// Generates a cryptographically secure random nonce, to be included in a
-  /// credential request.
-  // String generateNonce([int length = 32]) {
-  //   const charset =
-  //       '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
-  //   final random = math.Random.secure();
-  //   return List.generate(length, (_) => charset[random.nextInt(charset.length)])
-  //       .join();
-  // }
-
-  /// Returns the sha256 hash of [input] in hex notation.
-  // String sha256ofString(String input) {
-  //   final bytes = utf8.encode(input);
-  //   final digest = sha256.convert(bytes);
-  //   return digest.toString();
-  // }
-
-  bool isLoggedIn() {
-    return FirebaseAuth.instance.currentUser != null;
   }
 }

@@ -37,9 +37,12 @@ class _SigninBodyState extends State<SigninBody> {
                   "Let's Sign you in.",
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
                 ),
-                const Text("Welcome back.", style: TextStyle(fontSize: 25)),
+                const Text("Welcome back.",
+                    style:
+                        TextStyle(fontSize: 25, fontWeight: FontWeight.w400)),
                 const Text("You've been missed!",
-                    style: TextStyle(fontSize: 25)),
+                    style:
+                        TextStyle(fontSize: 25, fontWeight: FontWeight.w400)),
                 const SizedBox(
                   height: 40,
                 ),
