@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "138225201349",
+    "project_id": "atw-signin-task",
+    "storage_bucket": "atw-signin-task.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138225201349:android:37b1658daf0868f81400ac",
+        "android_client_info": {
+          "package_name": "com.example.atw_signin_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAkfByKiuNk1Q7zry46R9XRB62Ej58KEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
