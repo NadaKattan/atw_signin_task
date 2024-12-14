@@ -6,7 +6,6 @@ class FirebaseAuthService {
   Future deleteUser() async {
     await FirebaseAuth.instance.currentUser!.delete();
   }
-
   Future<User> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
     try {

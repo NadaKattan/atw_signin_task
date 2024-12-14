@@ -13,7 +13,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = CustomBlocObserver();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // await Prefs.init();
+  await Prefs.init();
   setupGetit();
 
   runApp(const MyApp());
